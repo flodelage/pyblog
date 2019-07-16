@@ -27,6 +27,18 @@
             </div>
             {% endfor %}
         </div>
+        <div class="col-sm-3">
+            <h5>Categories</h5>
+            <ul class="list-unstyled">
+                {% for cat in categories %}
+                    <li>
+                        <a href="{% url 'post-list' cat.slug %}" class="badge badge-secondary">
+                           {{ cat.name|capfirst }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>
 
