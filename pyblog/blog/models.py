@@ -1,10 +1,17 @@
 from django.db import models
 
+from django.template.defaultfilters import slugify
+
+
 class PostCategory(models.Model):
     name = models.CharField(max_length=50)
 
+    def slug(self):
+        return slugify(self.name)
+
     def __str__(self):
         return self.name
+
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -19,6 +26,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Comment(models.Model):
     STATUS_VISIBLE = 'visible'
