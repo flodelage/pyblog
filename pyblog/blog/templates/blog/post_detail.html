@@ -15,4 +15,17 @@
         <a class="badge badge-info" href="{% url 'post-list' post.category.slug %}">{{ post.category.name|capfirst }}</a>
     </div>
 </div>
+
+<div class="col-sm-3">
+    <h5>Posts from the same category</h5>
+    <ul class="list-group">
+        {% for post in posts_same_category %}
+            <li class="list-group-item">
+                <a href="{% url 'post-detail' post.pk %}"> {{ post.title|truncatewords:4 }} </a>
+            </li>
+        {% empty %}
+        This is the only post !
+        {% endfor %}
+    </ul>
+</div>
 {% endblock content %}
