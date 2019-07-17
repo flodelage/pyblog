@@ -48,7 +48,8 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     # FOREIGN KEYS:
     post = models.ForeignKey('Post',
-                             on_delete=models.CASCADE)
+                             on_delete=models.CASCADE,
+                             related_name='comments',)
 
     def __str__(self):
         return '{} - {} (status:{})'.format(self.author_name, self.text[:20], self.status)
